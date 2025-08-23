@@ -41,7 +41,7 @@ dependencies {
 	testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-	testImplementation("org.testcontainers:mongodb:1.20.0")
+	testImplementation("org.testcontainers:mongodb:1.21.3")
 	testImplementation("org.springframework.boot:spring-boot-testcontainers")
 
 	implementation("org.springdoc:springdoc-openapi-starter-webflux-api:2.8.10")
