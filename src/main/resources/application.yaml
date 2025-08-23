@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: reactivestarter
+  data:
+    mongodb:
+      database: mydb
+  security:
+    oauth2:
+      secret-key: lL3+Fm14g9hw2d0H6G9wjI3t65DN00ZHPE//2i0byBfjblUePaW56lJvV/ya9yDQP2MZ2In727G7BvvkpPCPpQ== # base64
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+springdoc:
+  paths-to-match: /api/v1/**
+
+server:
+  error:
+    include-stacktrace: never
