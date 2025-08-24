@@ -16,6 +16,13 @@ data class UserDocument(
     @Indexed(unique = true) val passwordResetKey: String? = null
 ) {
     fun isActive(): Boolean = status == AccountStatus.ACTIVE
+
+    fun toDTO(): UserDto = UserDto(
+        username = username,
+        email = email,
+        roles = roles.map(UserRole::name).toSet(),
+        status = status
+    )
 }
 
 enum class AccountStatus {
