@@ -3,7 +3,7 @@ package com.ablil.minitrello.security
 import com.ablil.minitrello.users.AccountStatus
 import com.ablil.minitrello.users.UserRole
 import com.ablil.minitrello.users.UsersRepository
-import org.springframework.security.core.GrantedAuthority
+import io.micrometer.observation.annotation.Observed
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.ReactiveUserDetailsService
 import org.springframework.security.core.userdetails.User

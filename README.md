@@ -12,3 +12,7 @@ A similar template with **servlet stack** can be found [here](https://github.com
 Currently only signin/signup and password reset endpoints are configured (including spring security), the rest will follow.
 
 TBD
+
+## zipkin
+
+Run Zipkin docker container for observability and tracing.

@@ -19,7 +19,7 @@ import reactor.core.publisher.Mono
 
 @RestController
 @RequestMapping("/api/v1/users")
-@PreAuthorize("hasRole('ADMIN')")
+//@PreAuthorize("hasRole('ADMIN')")
 @SecurityRequirement(name = "bearer")
 class UsersController(val usersService: UsersService) {
 

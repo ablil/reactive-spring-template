@@ -4,3 +4,10 @@ services:
     container_name: db
     ports:
       - 27017:27017
+
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    ports:
+      - 9411:9411
+    network_mode: bridge # comment to use Docker network
