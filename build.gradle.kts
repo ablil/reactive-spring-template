@@ -24,7 +24,6 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-reactivestreams
 	implementation("org.mongodb:mongodb-driver-reactivestreams:5.5.1")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
-	implementation("org.springframework.boot:spring-boot-starter-aop")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
 	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
@@ -47,9 +46,6 @@ dependencies {
 
 	implementation("org.springdoc:springdoc-openapi-starter-webflux-api:2.8.10")
 	implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:2.8.10")
-
-	runtimeOnly("io.micrometer:micrometer-tracing-bridge-otel")
-	runtimeOnly("io.opentelemetry:opentelemetry-exporter-zipkin")
 }
 
 kotlin {

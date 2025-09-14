@@ -8,21 +8,11 @@ spring:
     oauth2:
       secret-key: lL3+Fm14g9hw2d0H6G9wjI3t65DN00ZHPE//2i0byBfjblUePaW56lJvV/ya9yDQP2MZ2In727G7BvvkpPCPpQ== # base64
 
-  reactor:
-    context-propagation: auto
-
 management:
-  metrics:
-    mongo:
-      command:
-        enabled: false
-  tracing:
-    sampling:
-      probability: 1.0
   endpoints:
     web:
       exposure:
-        include: health,info,metrics
+        include: health,info
 
 springdoc:
   paths-to-match: /api/v1/**
@@ -30,7 +20,3 @@ springdoc:
 server:
   error:
     include-stacktrace: never
-
-logging:
-  pattern:
-    level: "trace_id=%mdc{traceId} span_id=%mdc{spanId} trace_flags=%mdc{traceFlags} %p"

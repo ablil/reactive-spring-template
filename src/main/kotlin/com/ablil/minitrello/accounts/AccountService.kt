@@ -8,7 +8,6 @@ import com.ablil.minitrello.users.AccountStatus
 import com.ablil.minitrello.users.UserDocument
 import com.ablil.minitrello.users.UserRole
 import com.ablil.minitrello.users.UsersRepository
-import io.micrometer.observation.annotation.Observed
 import jakarta.validation.Valid
 import jakarta.validation.constraints.Email
 import org.apache.commons.lang3.RandomStringUtils
