@@ -1,5 +1,7 @@
 package com.ablil.minitrello.accounts
 
+import com.ablil.minitrello.commons.ResourceNotFoundException
+import com.ablil.minitrello.commons.UnprocessableRequest
 import com.ablil.minitrello.security.JwtUtils
 import com.ablil.minitrello.security.SecurityUtils
 import com.ablil.minitrello.users.AccountStatus
@@ -53,7 +55,7 @@ class AccountService(
         return usersRepository.findByActivationKey(key)
             .map { it.copy(status = AccountStatus.ACTIVE, activationKey = null) }
             .flatMap { usersRepository.save(it) }
-            .switchIfEmpty(Mono.error(IllegalArgumentException("No activation key found")))
+            .switchIfEmpty(Mono.error(ResourceNotFoundException("No activation key found")))
             .then()
     }
 
@@ -83,9 +85,9 @@ class AccountService(
     fun resetPassword(request: Mono<ResetPasswordRequest>): Mono<Void> {
         return request.flatMap { req ->
             usersRepository.findByPasswordResetKey(req.key)
-                .switchIfEmpty(Mono.error(IllegalArgumentException("invalid key")))
+                .switchIfEmpty(Mono.error(ResourceNotFoundException("invalid key")))
                 .filter { document -> !passwordEncoder.matches(req.newPassword, document.password) }
-                .switchIfEmpty(Mono.error(IllegalStateException("can NOT use the same password")))
+                .switchIfEmpty(Mono.error(UnprocessableRequest("can NOT use the same password")))
                 .map { document ->
                     document.copy(
                         password = passwordEncoder.encode(req.newPassword),
@@ -100,12 +102,12 @@ class AccountService(
     fun updatePassword(@Valid request: Mono<UpdatePasswordRequest>): Mono<Void> {
         return request
             .filter { it.oldPassword != it.newPassword }
-            .switchIfEmpty(Mono.error(IllegalArgumentException("can NOT reuse the same password")))
+            .switchIfEmpty(Mono.error(UnprocessableRequest("can NOT reuse the same password")))
             .flatMap { req ->
                 SecurityUtils.getAuthenticatedUsername()
                     .flatMap { usersRepository.findById(it) }
                     .filter { passwordEncoder.matches(req.oldPassword, it.password) }
-                    .switchIfEmpty(Mono.error(IllegalArgumentException("invalid old password")))
+                    .switchIfEmpty(Mono.error(UnprocessableRequest("invalid old password")))
                     .map { document -> document.copy(password = passwordEncoder.encode(req.newPassword)) }
                     .flatMap { usersRepository.save(it) }
                     .then()

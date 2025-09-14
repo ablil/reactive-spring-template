@@ -1,5 +1,6 @@
 package com.ablil.minitrello.accounts
 
+import com.ablil.minitrello.commons.ConflictException
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import jakarta.validation.constraints.Email
@@ -24,7 +25,7 @@ class AccountController(val accountService: AccountService) {
     fun signUp(@RequestBody body: Mono<SignUpRequest>): Mono<Void> =
         accountService
             .registerNewAccount(body)
-            .switchIfEmpty(Mono.error(IllegalArgumentException("account already exists")))
+            .switchIfEmpty(Mono.error(ConflictException("account already exists")))
             .then()
 
 

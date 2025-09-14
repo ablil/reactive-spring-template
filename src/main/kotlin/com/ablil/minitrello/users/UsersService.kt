@@ -1,5 +1,7 @@
 package com.ablil.minitrello.users
 
+import com.ablil.minitrello.commons.ConflictException
+import com.ablil.minitrello.commons.ResourceNotFoundException
 import org.springframework.data.domain.Pageable
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
@@ -21,7 +23,7 @@ class UsersService(val usersRepository: UsersRepository, private val passwordEnc
         request.flatMap { req ->
             doesUserExist(req.username, req.email)
                 .filter { !it }
-                .switchIfEmpty(Mono.error(IllegalArgumentException("account already exists")))
+                .switchIfEmpty(Mono.error(ConflictException("account already exists")))
                 .map {
                     UserDocument(
                         username = req.username,
@@ -55,7 +57,7 @@ class UsersService(val usersRepository: UsersRepository, private val passwordEnc
             }
             .flatMap { usersRepository.save(it) }
             .map(UserDocument::toDTO)
-            .switchIfEmpty(Mono.error(IllegalArgumentException("account does not exist")))
+            .switchIfEmpty(Mono.error(ResourceNotFoundException("account does not exist")))
 
     fun deleteUser(username: String) = usersRepository.deleteById(username)
 
