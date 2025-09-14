@@ -1,6 +1,9 @@
 # havent yet decided if this makefile should be commited and maintained
 
-.PHONY: help
+.PHONY: compile
+
+compile:
+	./gradlew assemble
 
 help:
 	grep -E '^[a-z]+:' Makefile # display all targets
