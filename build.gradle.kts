@@ -22,7 +22,7 @@ repositories {
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
 	// https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-reactivestreams
-	implementation("org.mongodb:mongodb-driver-reactivestreams:5.5.1")
+	implementation("org.mongodb:mongodb-driver-reactivestreams:5.6.0")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
 	implementation("org.springframework.boot:spring-boot-starter-security")
