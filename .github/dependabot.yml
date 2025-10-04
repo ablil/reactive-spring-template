@@ -4,6 +4,8 @@ updates:
   directory: "/"
   schedule:
     interval: monthly
+  ignore:
+    - dependency-name: "org.mongodb:mongodb-driver-reactivestreams" # version 5.6.0 breaks the build
 - package-ecosystem: github-actions
   directory: "/"
   schedule:
