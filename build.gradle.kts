@@ -22,7 +22,7 @@ repositories {
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
 	// https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-reactivestreams
-	implementation("org.mongodb:mongodb-driver-reactivestreams:5.6.0")
+	implementation("org.mongodb:mongodb-driver-reactivestreams:5.5.0")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
 	implementation("org.springframework.boot:spring-boot-starter-security")
@@ -44,8 +44,8 @@ dependencies {
 	testImplementation("org.testcontainers:mongodb:1.20.0")
 	testImplementation("org.springframework.boot:spring-boot-testcontainers")
 
-	implementation("org.springdoc:springdoc-openapi-starter-webflux-api:2.8.10")
-	implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:2.8.10")
+	implementation("org.springdoc:springdoc-openapi-starter-webflux-api:2.8.13")
+	implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:2.8.13")
 }
 
 kotlin {
