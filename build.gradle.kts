@@ -44,8 +44,8 @@ dependencies {
 	testImplementation("org.testcontainers:mongodb:1.20.0")
 	testImplementation("org.springframework.boot:spring-boot-testcontainers")
 
-	implementation("org.springdoc:springdoc-openapi-starter-webflux-api:2.8.13")
-	implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:2.8.13")
+	implementation("org.springdoc:springdoc-openapi-starter-webflux-api:3.0.0")
+	implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:3.0.0")
 }
 
 kotlin {
